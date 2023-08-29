@@ -1,7 +1,7 @@
 USE employees;
 
 /*
- * The use of the WHERE condition is important, otherwise we take the risk of 
+ * The use of the WHERE condition is important, otherwise, we take the risk of 
  * deleting all records in a table. 
  * 
  * Differences between DROP - TRUNCATE - DELETE
@@ -10,7 +10,7 @@ USE employees;
  * Use it when the table is no longer to be needed.
  * 
  * TRUNCATE: Removes all records of the table, but the structure will remain
- * Ends up with the the empty table. Just as a DELETE without the WHERE clause.
+ * Ends up with the empty table. Just as a DELETE without the WHERE clause.
  * 
  * DELETE: Removes records by rows, specifying a condition.
  * Have in mind also that auto-increment values are not reset with DELETE
