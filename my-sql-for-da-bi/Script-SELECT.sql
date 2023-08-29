@@ -1,4 +1,4 @@
-# This Script contains Queries for Data Maniulation using the "SELECT" statement 
+# This Script contains Queries for Data Manipulation using the "SELECT" statement 
 
 USE employees;
 
@@ -30,11 +30,11 @@ Parenthesis can also be used to enclose
 
 
 To satisfy more than 2 conditions we can use the "IN" operator
-Also is faster than "OR" structure
+Also is faster than the "OR" structure
 
 MySQL is case insensitive (is the same capital letter or not)
 
-TO search for patterns in writing use LIKE and LIKE NOT with the "%" and "_" called wildcard characters:
+To search for patterns in writing use LIKE and LIKE NOT with the "%" and "_" called wildcard characters:
 	 The "%" represents a sequence of chars that follows the typed word
 	 	chars% -> gets all the registers starting with the "chars" typed
 	 	%chars -> gets all the registers ending with the "chars" typed
@@ -46,10 +46,10 @@ TO search for patterns in writing use LIKE and LIKE NOT with the "%" and "_" cal
 	 
 	 
 AGGREGATE FUNCTIONS:
-They ignore NULL value (unless told not to)
+They ignore the NULL value (unless told not to)
 
 -> COUNT(): counts the number of non-null records in a field
--> AVG(): average
+-> AVG(): Average
 
 	WHERE vs HAVING:
 	If I need to use aggregate function -> Use GROUP BY and HAVING
@@ -61,7 +61,7 @@ They ignore NULL value (unless told not to)
 
 # EXERCISES Section:
 
--- Select full name of employees
+-- Select the full name of the employees
 SELECT first_name, last_name FROM employees;
 
 -- Select the info from the "dept_no" column of the "departments" table
@@ -82,20 +82,20 @@ SELECT * FROM employees WHERE first_name = 'Kellie' OR first_name = 'Aruna';
 -- Retrieve a list with all female employees whose first name is either Kellie or Aruna
 SELECT * FROM employees e WHERE (first_name = 'Kellie' OR first_name = 'Aruna') AND gender = 'F';
 
--- Use the IN operator to select all individuals whose nae is either Denis or Elvis
+-- Use the IN operator to select all individuals whose names is either Denis or Elvis
 SELECT * FROM employees WHERE first_name IN ('Denis', 'Elvis');
 
--- Extract records, aside from those with employees naemd John, Mark or Jacob
+-- Extract records, aside from those with employees named John, Mark, or Jacob
 SELECT * FROM employees WHERE first_name NOT IN ('John', 'Mark', 'Jacob');
 
 -- Select the data about all individuals whose first name starts with "Mark" 
--- (the name can be succeeded by any squence of characters)
+-- (the name can be succeeded by any sequence of characters)
 SELECT * FROM employees WHERE first_name LIKE('Mark%');		
 
--- Retrieve a list with all employees who have been hired in the year 2000
+-- Retrieve a list of all employees who have been hired in the year 2000
 SELECT * FROM employees WHERE hire_date LIKE ('%2000%');
 
--- Retireve a list with all employees whose employee number is written with 5 characters, and starts with "1000".
+-- Retrieve a list with all employees whose employee number is written with 5 characters, and starts with "1000".
 SELECT * FROM employees WHERE emp_no LIKE ('1000_');
 
 -- Extract all individuals from the ‘employees’ table whose first name contains “Jack”.
@@ -128,7 +128,7 @@ SELECT DISTINCT hire_date FROM employees;
 -- How many employees are registered in our database?
 SELECT COUNT(emp_no) FROM employees;
 
--- How many different names can be found in the employees table
+-- How many different names can be found in the employees' table
 SELECT COUNT(DISTINCT first_name) FROM employees; 
 
 -- How many annual contracts with a value higher than or equal to $100,000 have been registered in the salaries table?
@@ -145,21 +145,21 @@ SELECT * FROM employees ORDER BY first_name, last_name ASC;
 -- Select all data from the “employees” table, ordering it by “hire date” in descending order.
 SELECT * FROM employees ORDER BY hire_date DESC;
 
--- Assume a list of two fields is needed, containing how many times a given name is repeated in our employees table
--- 	* here the GROUP_BY act like a DISTINCT statement, displaying just distinct values
+-- Assume a list of two fields is needed, containing how many times a given name is repeated in our employees' table
+-- 	* Here the GROUP_BY acts like a DISTINCT statement, displaying just distinct values
 SELECT first_name, COUNT(first_name) 
 FROM employees 
 GROUP BY first_name 
 ORDER BY first_name DESC;
 
--- Rename the previous calculated result with athe aggregate function COUNT (use AS for the alias)
+-- Rename the previously calculated result with the aggregate function COUNT (use AS for the alias)
 SELECT first_name, COUNT(first_name) AS names_count 
 FROM employees 
 GROUP BY first_name 
 ORDER BY first_name;
 
 -- Write a query that obtains two columns. The first column must contain annual salaries higher than 80,000 dollars. 
--- The second column, renamed to “emps_with_same_salary”, must show the number of employees contracted to that salary. 
+-- The second column, renamed as “emps_with_same_salary”, must show the number of employees contracted to that salary. 
 -- Lastly, sort the output by the first column.
 SELECT 
 	salary, COUNT(emp_no) AS emps_with_same_salary
@@ -170,9 +170,9 @@ WHERE
 GROUP BY salary
 ORDER BY salary;
 
--- Example to query data of first names whose repeat more than 250 times. 
+-- Example to query data of first names who repeat more than 250 times. 
 -- In this example as there is a condition for the aggregate function COUNT, 
--- the HAVING clause instead of WHERE clause must be used 
+-- the HAVING clause instead of the WHERE clause must be used 
 SELECT 
 	first_name, COUNT(first_name) AS names_count 
 FROM employees 
@@ -205,7 +205,7 @@ GROUP BY emp_no
 HAVING COUNT(from_date) > 1
 ORDER BY emp_no;
 
--- Show the employee numbers of the 10 highest paid employees in the database
+-- Show the employee numbers of the 10 highest-paid employees in the database
 SELECT * 
 FROM salaries
 ORDER BY salary DESC 
