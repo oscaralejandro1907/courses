@@ -1,7 +1,7 @@
 USE employees;
 
 /* 
- * UPDATE statement update the values of an existing record
+ * UPDATE statement updates the values of an existing record
  * If the WHERE condition(s) is(are) not provided, ALL ROWS will be updated
  */
 
