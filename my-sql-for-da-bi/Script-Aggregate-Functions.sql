@@ -10,12 +10,12 @@ USE employees;
  */
 
 /*
- * 	IFNULL(expr_1, expr_2): returns the first expresion if the data is not null, 
+ * 	IFNULL(expr_1, expr_2): returns the first expression if the data is not null, 
  * 	and returns the second if there is a null value.
  * 
  * 	As IFNULL only accepts 2 params, COALESCE allows N arguments.
  * 	COALESCE will return a single value of the params. This value will be the first non-null value,
- * 	reading the favlues from left to right. 
+ * 	Read the values from left to right. 
  */
 
 
@@ -43,7 +43,7 @@ SELECT MIN(emp_no) FROM employees;
 -- Which is the highest employee number in the database?
 SELECT MAX(emp_no) FROM employees; 
 
--- Which is the average annual salary the company's employee received?
+-- What is the average annual salary the company's employee receives?
 SELECT AVG(salary) FROM salaries;
 
 -- What is the average annual salary paid to employees who started after the 1st of January 1997?
@@ -64,7 +64,7 @@ FROM departments_dup
 ORDER BY dept_no ASC;
 
 -- Modify the code obtained from the previous exercise in the following way. 
--- Apply the IFNULL() function to the values from the first and second column, so that ‘N/A’ is displayed whenever 
+-- Apply the IFNULL() function to the values from the first and second columns, so that ‘N/A’ is displayed whenever 
 -- a department number has no value, and ‘Department name not provided’ is shown if there is no value for ‘dept_name’.
 SELECT IFNULL(dept_no, 'N/A') AS dept_no, IFNULL(dept_name, 'Department name not provided') AS dept_name, COALESCE (dept_no, dept_name) AS dept_info
 FROM departments_dup 
